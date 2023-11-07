@@ -24,6 +24,12 @@
       "type": "boolean",
       "required": true,
       "default": false
+    },
+    "user_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "reviews"
     }
   }
 }

@@ -379,6 +379,11 @@ export interface ApiReviewReview extends Schema.CollectionType {
     isActive: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
+    user_id: Attribute.Relation<
+      'api::review.review',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -650,6 +655,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToOne',
       'plugin::users-permissions.role'
+    >;
+    reviews: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::review.review'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
