@@ -16,15 +16,18 @@ export default factories.createCoreService(
       return reviews;
     },
     async createReview(dto, userId: number) {
-        const review = await strapi.entityService.create('api::review.review', {
-            data: {
-                text: dto.text,
-                ownerEmail: dto.ownerEmail,
-                isActive: dto.isActive,
-                user_id: userId,
-            }
-        })
-        return review;
-      },
+      const review = await strapi.entityService.create("api::review.review", {
+        data: {
+          ...dto.data,
+          user_id: userId,
+        },
+      });
+      return {
+        id: review.id,
+        attributes: {
+          ...review
+        }
+      };
+    },
   })
 );

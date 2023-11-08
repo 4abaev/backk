@@ -371,7 +371,7 @@ export interface ApiReviewReview extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     text: Attribute.Text & Attribute.Required;
@@ -386,7 +386,6 @@ export interface ApiReviewReview extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::review.review',
       'oneToOne',

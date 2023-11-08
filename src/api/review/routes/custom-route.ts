@@ -13,7 +13,7 @@ export default  {
     },
     {
         method: "POST",
-        path: "/reviews",
+        path: "/reviews/create",
         handler: "review.createReview",
         config: {
           policies: [],
